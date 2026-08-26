@@ -1,0 +1,62 @@
+[
+  {
+    "id": "page_001",
+    "title": "Homepage",
+    "slug": "/",
+    "type": "homepage",
+    "status": "published",
+    "lastUpdated": "2026-08-20",
+    "updatedBy": "Admin User",
+    "content": "Welcome to HandyHelper - Your Trusted Platform for Skilled Workers"
+  },
+  {
+    "id": "page_002",
+    "title": "Terms & Conditions",
+    "slug": "/terms",
+    "type": "terms",
+    "status": "published",
+    "lastUpdated": "2026-08-15",
+    "updatedBy": "Admin User",
+    "content": "Terms and conditions for using HandyHelper platform..."
+  },
+  {
+    "id": "page_003",
+    "title": "Privacy Policy",
+    "slug": "/privacy",
+    "type": "privacy",
+    "status": "published",
+    "lastUpdated": "2026-08-15",
+    "updatedBy": "Admin User",
+    "content": "Your privacy is important to us. This policy describes how we collect and use your data..."
+  },
+  {
+    "id": "page_004",
+    "title": "Help Center",
+    "slug": "/help",
+    "type": "help",
+    "status": "published",
+    "lastUpdated": "2026-08-18",
+    "updatedBy": "Admin User",
+    "content": "Frequently asked questions and support resources..."
+  },
+  {
+    "id": "page_005",
+    "title": "FAQ",
+    "slug": "/faq",
+    "type": "faq",
+    "status": "published",
+    "lastUpdated": "2026-08-19",
+    "updatedBy": "Admin User",
+    "content": "Common questions about HandyHelper..."
+  },
+  {
+    "id": "page_006",
+    "title": "Scheduled Maintenance Notice",
+    "slug": "/announcements/maintenance",
+    "type": "announcement",
+    "status": "draft",
+    "lastUpdated": "2026-08-26",
+    "updatedBy": "Admin User",
+    "content": "We will be performing scheduled maintenance on Aug 30, 2026 from 2:00 AM to 5:00 AM."
+  }
+]

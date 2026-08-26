@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ann_001",
+    "title": "Platform Maintenance",
+    "content": "Scheduled maintenance on Aug 30, 2026 from 2:00 AM to 5:00 AM. The platform will be temporarily unavailable.",
+    "type": "maintenance",
+    "status": "scheduled",
+    "startDate": "2026-08-26",
+    "endDate": "2026-08-30",
+    "createdBy": "Admin User"
+  },
+  {
+    "id": "ann_002",
+    "title": "New Feature: Real-time Chat",
+    "content": "We've launched real-time chat between clients and members. Update your app to use this feature!",
+    "type": "update",
+    "status": "active",
+    "startDate": "2026-08-15",
+    "endDate": "2026-09-15",
+    "createdBy": "Admin User"
+  },
+  {
+    "id": "ann_003",
+    "title": "Safety Reminder",
+    "content": "Always verify member credentials before allowing them to work on your property. Look for the verified badge.",
+    "type": "info",
+    "status": "active",
+    "startDate": "2026-08-01",
+    "endDate": "2026-12-31",
+    "createdBy": "Admin User"
+  },
+  {
+    "id": "ann_004",
+    "title": "Subscription Price Adjustment",
+    "content": "Starting September 1, 2026, subscription prices will be updated. Current subscribers are locked in at their current rate for 3 months.",
+    "type": "warning",
+    "status": "scheduled",
+    "startDate": "2026-08-20",
+    "endDate": "2026-09-30",
+    "createdBy": "Admin User"
+  }
+]

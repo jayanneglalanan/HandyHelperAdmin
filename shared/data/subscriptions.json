@@ -1,0 +1,40 @@
+[
+  {
+    "id": "plan_003",
+    "name": "Professional",
+    "price": 799,
+    "duration": "yearly",
+    "features": [
+      "Premium profile listing",
+      "Unlimited job applications",
+      "Top visibility in search",
+      "Priority support",
+      "Portfolio showcase (20 items)",
+      "Advanced analytics",
+      "Featured member badge",
+      "Verification badge"
+    ],
+    "status": "active",
+    "subscriberCount": 18
+  },
+  {
+    "id": "plan_004",
+    "name": "Premium",
+    "price": 1499,
+    "duration": "yearly",
+    "features": [
+      "Exclusive profile listing",
+      "Unlimited job applications",
+      "Top of search results",
+      "Dedicated support",
+      "Unlimited portfolio",
+      "Full analytics dashboard",
+      "Featured member badge",
+      "Verification badge",
+      "Priority matching",
+      "Custom branding"
+    ],
+    "status": "active",
+    "subscriberCount": 5
+  }
+]

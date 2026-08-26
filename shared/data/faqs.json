@@ -1,0 +1,50 @@
+[
+  {
+    "id": "faq_001",
+    "question": "How do I post a job on HandyHelper?",
+    "answer": "Simply log in to your client account, go to Dashboard, and click 'Post New Job'. Fill in the job details including category, description, budget, and preferred schedule.",
+    "category": "Getting Started",
+    "order": 1,
+    "published": true
+  },
+  {
+    "id": "faq_002",
+    "question": "How do I become a verified member?",
+    "answer": "Register as a member, complete your profile, add your credentials (certificates, licenses, experience), and submit for verification. Our admin team will review your documents within 2-3 business days.",
+    "category": "Getting Started",
+    "order": 2,
+    "published": true
+  },
+  {
+    "id": "faq_003",
+    "question": "What payment methods are accepted?",
+    "answer": "We accept cash on service, GCash, Maya, and bank transfers. Payment is made directly to the member after job completion.",
+    "category": "Payments",
+    "order": 3,
+    "published": true
+  },
+  {
+    "id": "faq_004",
+    "question": "What happens if a member doesn't show up?",
+    "answer": "If a member doesn't show up, you can file a report through the platform. Our admin team will investigate and take appropriate action, which may include member suspension.",
+    "category": "Support",
+    "order": 4,
+    "published": true
+  },
+  {
+    "id": "faq_005",
+    "question": "How do I cancel a job?",
+    "answer": "You can cancel a job before a member accepts it. If a member has already accepted, you'll need to coordinate with them or file a dispute through the platform.",
+    "category": "Jobs",
+    "order": 5,
+    "published": true
+  },
+  {
+    "id": "faq_006",
+    "question": "What subscription plans are available?",
+    "answer": "We offer Free, Basic ($299/mo), Professional ($799/mo), and Premium ($1,499/mo) plans. Each plan offers different features and visibility levels.",
+    "category": "Subscriptions",
+    "order": 6,
+    "published": true
+  }
+]

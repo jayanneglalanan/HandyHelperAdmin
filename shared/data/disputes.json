@@ -1,0 +1,46 @@
+[
+  {
+    "id": "disp_001",
+    "clientId": "usr_016",
+    "clientName": "Angelo Ramos",
+    "memberId": "usr_010",
+    "memberName": "Ricardo Bautista",
+    "jobId": "job_013",
+    "jobTitle": "Washing Machine Repair",
+    "reason": "Incomplete repair",
+    "description": "Member charged full price but the washing machine still doesn't work properly. Requesting partial refund.",
+    "evidence": ["Photos of machine still malfunctioning", "Chat screenshots confirming issue"],
+    "status": "investigating",
+    "filedDate": "2026-08-12"
+  },
+  {
+    "id": "disp_002",
+    "clientId": "usr_002",
+    "clientName": "Juan Dela Cruz",
+    "memberId": "usr_014",
+    "memberName": "David Cruz",
+    "jobId": "job_012",
+    "jobTitle": "Furniture Disassembly and Moving",
+    "reason": "Property damage",
+    "description": "Member damaged a wooden cabinet during disassembly. Seeking compensation for repair costs.",
+    "evidence": ["Photos of damaged cabinet", "Original furniture photos for comparison"],
+    "status": "resolved",
+    "filedDate": "2026-08-13",
+    "resolvedDate": "2026-08-18",
+    "resolution": "Member agreed to pay $200 for cabinet repair. Payment plan arranged."
+  },
+  {
+    "id": "disp_003",
+    "clientId": "usr_015",
+    "clientName": "Sofia Aquino",
+    "memberId": "usr_004",
+    "memberName": "Pedro Santos",
+    "jobId": "job_003",
+    "jobTitle": "Carpenter for Custom Bookshelf",
+    "reason": "Schedule delay",
+    "description": "Project is taking longer than agreed. Originally estimated 1 week, now on week 2.",
+    "evidence": ["Original agreement screenshots", "Chat history"],
+    "status": "pending",
+    "filedDate": "2026-08-25"
+  }
+]

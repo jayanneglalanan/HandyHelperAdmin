@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* === Keyframes === */
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+@keyframes barGrow {
+  from { height: 0; }
+}
+
+/* === Animation Utilities === */
+.animate-fade-in { animation: fadeIn 200ms ease-out both; }
+.animate-fade-in-up { animation: fadeInUp 250ms ease-out both; }
+.animate-scale-in { animation: scaleIn 200ms ease-out both; }
+.animate-slide-in-right { animation: slideInRight 250ms ease-out both; }
+.animate-shake { animation: shake 300ms ease-in-out; }
+.animate-bar-grow { animation: barGrow 600ms ease-out both; }
+
+/* === Skeleton Loading === */
+.skeleton {
+  background: linear-gradient(90deg, #F0F0F0 25%, #E5E5E5 50%, #F0F0F0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.dark .skeleton {
+  background: linear-gradient(90deg, #1A1A1A 25%, #333333 50%, #1A1A1A 75%);
+  background-size: 200% 100%;
+}
+
+/* Safe area for mobile bottom nav */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 1023px) {
+  button, a, [role="button"] {
+    min-height: 32px;
+  }
+
+  /* Larger touch targets for interactive elements */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile card touch feedback */
+@media (max-width: 1023px) {
+  .active\:bg-gray-100:active {
+    background-color: #F0F0F0;
+  }
+  .dark .active\:bg-gray-800:active {
+    background-color: #1A1A1A;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5D5D5;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8A8A8A;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #444444;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #666666;
+}
+
+/* Autofill styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+  -webkit-text-fill-color: #111111;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px #1A1A1A inset;
+  -webkit-text-fill-color: #FFFFFF;
+}
+
+/* Mobile table horizontal scroll */
+@media (max-width: 767px) {
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Prevent zoom on input focus (iOS) */
+@media (max-width: 767px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Mobile-specific spacing adjustments */
+@media (max-width: 639px) {
+  .space-y-4 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+
+  .gap-4 {
+    gap: 0.75rem;
+  }
+}
+
+/* Dark mode body background */
+.dark body {
+  background-color: #111111;
+}
+
+/* Smooth transitions for theme switching */
+body,
+.bg-white,
+.bg-gray-50,
+.bg-gray-100 {
+  transition: background-color 0.15s ease-in-out;
+}

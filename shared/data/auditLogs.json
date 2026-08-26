@@ -1,0 +1,122 @@
+[
+  {
+    "id": "log_001",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "login",
+    "targetType": "system",
+    "targetId": "system",
+    "targetName": "Admin Dashboard",
+    "details": "Admin logged in successfully",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-25T08:30:00Z"
+  },
+  {
+    "id": "log_002",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "verify",
+    "targetType": "credential",
+    "targetId": "cred_001",
+    "targetName": "NC II in Carpentry - Pedro Santos",
+    "details": "Approved credential for member Pedro Santos",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-25T09:15:00Z"
+  },
+  {
+    "id": "log_003",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "suspend",
+    "targetType": "user",
+    "targetId": "usr_014",
+    "targetName": "David Cruz",
+    "details": "Suspended user due to multiple reports",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-25T10:00:00Z"
+  },
+  {
+    "id": "log_004",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "update",
+    "targetType": "category",
+    "targetId": "cat_001",
+    "targetName": "Plumbing",
+    "details": "Updated category description",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-25T11:30:00Z"
+  },
+  {
+    "id": "log_005",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "resolve",
+    "targetType": "report",
+    "targetId": "rpt_002",
+    "targetName": "Property Damage Report #rpt_002",
+    "details": "Resolved report against David Cruz",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-25T14:00:00Z"
+  },
+  {
+    "id": "log_006",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "approve",
+    "targetType": "credential",
+    "targetId": "cred_005",
+    "targetName": "Master Electrician License - Carlos Garcia",
+    "details": "Approved license credential",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-24T09:00:00Z"
+  },
+  {
+    "id": "log_007",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "reject",
+    "targetType": "credential",
+    "targetId": "cred_012",
+    "targetName": "Basic Plumbing Course - Joy Fernando",
+    "details": "Rejected credential - unclear document",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-24T10:30:00Z"
+  },
+  {
+    "id": "log_008",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "create",
+    "targetType": "announcement",
+    "targetId": "ann_001",
+    "targetName": "Platform Maintenance",
+    "details": "Created maintenance announcement for Aug 30",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-24T15:00:00Z"
+  },
+  {
+    "id": "log_009",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "update",
+    "targetType": "subscription",
+    "targetId": "plan_003",
+    "targetName": "Professional Plan",
+    "details": "Updated plan features list",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-23T11:00:00Z"
+  },
+  {
+    "id": "log_010",
+    "userId": "usr_001",
+    "userName": "Admin User",
+    "action": "flag",
+    "targetType": "review",
+    "targetId": "rev_005",
+    "targetName": "Review by Angelo Ramos",
+    "details": "Flagged review for inappropriate content",
+    "ipAddress": "192.168.1.100",
+    "timestamp": "2026-08-23T14:30:00Z"
+  }
+]

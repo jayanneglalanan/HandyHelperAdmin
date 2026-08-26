@@ -1,0 +1,78 @@
+{
+  "userGrowth": [
+    { "month": "Jan", "count": 12 },
+    { "month": "Feb", "count": 18 },
+    { "month": "Mar", "count": 25 },
+    { "month": "Apr", "count": 32 },
+    { "month": "May", "count": 41 },
+    { "month": "Jun", "count": 52 },
+    { "month": "Jul", "count": 68 },
+    { "month": "Aug", "count": 85 }
+  ],
+  "jobGrowth": [
+    { "month": "Jan", "count": 8 },
+    { "month": "Feb", "count": 14 },
+    { "month": "Mar", "count": 22 },
+    { "month": "Apr", "count": 30 },
+    { "month": "May", "count": 38 },
+    { "month": "Jun", "count": 48 },
+    { "month": "Jul", "count": 62 },
+    { "month": "Aug", "count": 78 }
+  ],
+  "memberGrowth": [
+    { "month": "Jan", "count": 5 },
+    { "month": "Feb", "count": 8 },
+    { "month": "Mar", "count": 12 },
+    { "month": "Apr", "count": 16 },
+    { "month": "May", "count": 22 },
+    { "month": "Jun", "count": 28 },
+    { "month": "Jul", "count": 35 },
+    { "month": "Aug", "count": 42 }
+  ],
+  "jobStats": {
+    "total": 1245,
+    "completed": 982,
+    "cancelled": 104,
+    "active": 159,
+    "avgCompletionDays": 2.3
+  },
+  "topSkills": [
+    { "name": "Plumbing", "jobCount": 245, "memberCount": 12 },
+    { "name": "Electrical", "jobCount": 198, "memberCount": 10 },
+    { "name": "Carpentry", "jobCount": 176, "memberCount": 8 },
+    { "name": "Painting", "jobCount": 143, "memberCount": 9 },
+    { "name": "Cleaning", "jobCount": 132, "memberCount": 15 },
+    { "name": "Appliance Repair", "jobCount": 118, "memberCount": 8 },
+    { "name": "Masonry", "jobCount": 89, "memberCount": 6 },
+    { "name": "Gardening", "jobCount": 76, "memberCount": 7 },
+    { "name": "Welding", "jobCount": 42, "memberCount": 5 },
+    { "name": "Mechanic", "jobCount": 26, "memberCount": 4 }
+  ],
+  "topLocations": [
+    { "name": "Austin, TX", "jobCount": 185, "userCount": 28 },
+    { "name": "Denver, CO", "jobCount": 156, "userCount": 22 },
+    { "name": "Portland, OR", "jobCount": 134, "userCount": 18 },
+    { "name": "Nashville, TN", "jobCount": 121, "userCount": 16 },
+    { "name": "Seattle, WA", "jobCount": 108, "userCount": 15 },
+    { "name": "Raleigh, NC", "jobCount": 89, "userCount": 12 },
+    { "name": "Charlotte, NC", "jobCount": 76, "userCount": 10 },
+    { "name": "Boise, ID", "jobCount": 65, "userCount": 8 }
+  ],
+  "ratingDistribution": [
+    { "rating": 5, "count": 420, "percentage": 45 },
+    { "rating": 4, "count": 310, "percentage": 33 },
+    { "rating": 3, "count": 120, "percentage": 13 },
+    { "rating": 2, "count": 55, "percentage": 6 },
+    { "rating": 1, "count": 30, "percentage": 3 }
+  ],
+  "revenueData": [
+    { "month": "Jan", "count": 8500 },
+    { "month": "Feb", "count": 12400 },
+    { "month": "Mar", "count": 18200 },
+    { "month": "Apr", "count": 24500 },
+    { "month": "May", "count": 31000 },
+    { "month": "Jun", "count": 38500 },
+    { "month": "Jul", "count": 45000 },
+    { "month": "Aug", "count": 52000 }
+  ]
+}

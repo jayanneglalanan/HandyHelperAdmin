@@ -1,0 +1,109 @@
+[
+  {
+    "id": "notif_001",
+    "type": "registration",
+    "title": "New Member Registration",
+    "message": "Patrick Diaz has registered as a new member.",
+    "date": "2026-05-20",
+    "read": true,
+    "relatedId": "usr_018"
+  },
+  {
+    "id": "notif_002",
+    "type": "credential",
+    "title": "Credential Submitted",
+    "message": "Lisa Gonzales submitted credentials for verification.",
+    "date": "2025-11-10",
+    "read": true,
+    "relatedId": "cred_008"
+  },
+  {
+    "id": "notif_003",
+    "type": "credential",
+    "title": "Credential Submitted",
+    "message": "Marco Lim submitted credentials for verification.",
+    "date": "2025-12-15",
+    "read": true,
+    "relatedId": "cred_010"
+  },
+  {
+    "id": "notif_004",
+    "type": "job",
+    "title": "New Job Posted",
+    "message": "Juan Dela Cruz posted a new Painting job: Whole House Painting.",
+    "date": "2026-08-20",
+    "read": false,
+    "relatedId": "job_005"
+  },
+  {
+    "id": "notif_005",
+    "type": "job",
+    "title": "Job Completed",
+    "message": "Anna Reyes completed the job: Fix Leaking Kitchen Sink.",
+    "date": "2026-08-03",
+    "read": true,
+    "relatedId": "job_001"
+  },
+  {
+    "id": "notif_006",
+    "type": "report",
+    "title": "New Report Filed",
+    "message": "Angelo Ramos filed a report against Ricardo Bautista.",
+    "date": "2026-08-11",
+    "read": false,
+    "relatedId": "rpt_001"
+  },
+  {
+    "id": "notif_007",
+    "type": "dispute",
+    "title": "New Dispute Filed",
+    "message": "Angelo Ramos filed a dispute regarding Washing Machine Repair.",
+    "date": "2026-08-12",
+    "read": false,
+    "relatedId": "disp_001"
+  },
+  {
+    "id": "notif_008",
+    "type": "registration",
+    "title": "New Client Registration",
+    "message": "Sofia Aquino has registered as a new client.",
+    "date": "2026-02-01",
+    "read": true,
+    "relatedId": "usr_015"
+  },
+  {
+    "id": "notif_009",
+    "type": "subscription",
+    "title": "Subscription Expiring",
+    "message": "Ricardo Bautista's Professional subscription expires in 7 days.",
+    "date": "2026-08-25",
+    "read": false,
+    "relatedId": "usr_010"
+  },
+  {
+    "id": "notif_010",
+    "type": "credential",
+    "title": "Credential Needs Update",
+    "message": "Joy Fernando's certificate needs a clearer copy.",
+    "date": "2026-01-25",
+    "read": true,
+    "relatedId": "cred_012"
+  },
+  {
+    "id": "notif_011",
+    "type": "system",
+    "title": "Platform Maintenance",
+    "message": "Scheduled maintenance on Aug 30, 2026 from 2:00 AM to 5:00 AM.",
+    "date": "2026-08-26",
+    "read": false
+  },
+  {
+    "id": "notif_012",
+    "type": "job",
+    "title": "Urgent Job Posted",
+    "message": "Angelo Ramos posted an urgent Plumbing job: Emergency Pipe Burst Repair.",
+    "date": "2026-08-24",
+    "read": false,
+    "relatedId": "job_004"
+  }
+]
