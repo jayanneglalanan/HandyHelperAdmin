@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -38,6 +38,19 @@ export default function JobDetailScreen() {
         <View style={styles.topRow}>
           <StatusBadge status={job.status} />
           <Text style={[styles.budget, { color: colors.text }]}>{formatCurrency(job.budget)}</Text>
+        </View>
+
+        <View style={{ flexDirection: 'row', gap: 8, marginBottom: 16 }}>
+          {job.status === 'open' && (
+            <TouchableOpacity onPress={() => Alert.alert('Assigned', `Member assigned to "${job.title}"`)} style={{ flex: 1, paddingVertical: 10, borderRadius: 8, backgroundColor: colors.primary || '#5B4BDB', alignItems: 'center' }}>
+              <Text style={{ color: '#FFF', fontSize: 14, fontWeight: '600' }}>Assign</Text>
+            </TouchableOpacity>
+          )}
+          {(job.status === 'open' || job.status === 'in_progress') && (
+            <TouchableOpacity onPress={() => Alert.alert('Cancelled', `Job "${job.title}" cancelled`)} style={{ flex: 1, paddingVertical: 10, borderRadius: 8, borderWidth: 1, borderColor: colors.error || '#DC2626', alignItems: 'center' }}>
+              <Text style={{ color: colors.error || '#DC2626', fontSize: 14, fontWeight: '600' }}>Cancel</Text>
+            </TouchableOpacity>
+          )}
         </View>
 
         <Card style={{ marginBottom: 12 }}>

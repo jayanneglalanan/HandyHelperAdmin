@@ -62,7 +62,15 @@ export default function CategoriesScreen() {
                 <Text style={[styles.stat, { color: colors.textSecondary }]}>{item.memberCount} members</Text>
                 <Text style={[styles.stat, { color: colors.textSecondary }]}>{item.jobCount} jobs</Text>
               </View>
-              <Badge variant={item.status === 'active' ? 'success' : 'neutral'}>{item.status}</Badge>
+              <View style={{ flexDirection: 'row', gap: 6, marginTop: 8 }}>
+                <Badge variant={item.status === 'active' ? 'success' : 'neutral'}>{item.status}</Badge>
+                <TouchableOpacity onPress={() => Alert.alert('Edit', `Editing "${item.name}"`)} style={{ paddingVertical: 2, paddingHorizontal: 8, borderRadius: 4, borderWidth: 1, borderColor: colors.border }}>
+                  <Text style={{ fontSize: 11, color: colors.textSecondary }}>Edit</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => Alert.alert('Delete', `Delete "${item.name}"?`)} style={{ paddingVertical: 2, paddingHorizontal: 8, borderRadius: 4, borderWidth: 1, borderColor: colors.error || '#DC2626' }}>
+                  <Text style={{ fontSize: 11, color: colors.error || '#DC2626' }}>Delete</Text>
+                </TouchableOpacity>
+              </View>
             </Card>
           )}
         />

@@ -29,6 +29,10 @@ export default function Notifications() {
     showToast('All notifications marked as read');
   };
 
+  const handleMarkRead = (id: string) => {
+    setReadIds(prev => new Set([...prev, id]));
+  };
+
   const getIconColor = (type: string) => {
     switch (type) {
       case 'registration': return 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400';
@@ -67,7 +71,7 @@ export default function Notifications() {
         <div className="px-3 sm:px-4 pt-3 sm:pt-4 overflow-x-auto"><Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} /></div>
         <div className="divide-y divide-gray-100 dark:divide-gray-800">
           {filtered.map((notif) => (
-            <div key={notif.id} className={`p-3 sm:p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors ${!isRead(notif) ? 'bg-blue-50/30 dark:bg-blue-900/5' : ''}`}>
+            <div key={notif.id} onClick={() => handleMarkRead(notif.id)} className={`p-3 sm:p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer ${!isRead(notif) ? 'bg-blue-50/30 dark:bg-blue-900/5' : ''}`}>
               <div className="flex items-start gap-3">
                 <div className={`p-1.5 rounded-full shrink-0 ${getIconColor(notif.type)}`}><span className="text-[10px] font-bold">{getTypeLabel(notif.type)}</span></div>
                 <div className="flex-1 min-w-0">

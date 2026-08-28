@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TextInput, TouchableOpacity, Modal, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TextInput, TouchableOpacity, Modal, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../hooks/useTheme';
@@ -93,6 +93,7 @@ export default function ChatScreen() {
           data={filtered}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => Alert.alert('Conversation', `${item.participant1Name} ↔ ${item.participant2Name}\n\nJob: ${item.jobTitle}\nMessages: ${item.messageCount}\n\n"${item.lastMessage}"`)} activeOpacity={0.7}>
             <Card style={{ marginBottom: 8 }}>
               <View style={styles.convHeader}>
                 <Text style={[styles.convNames, { color: colors.text }]} numberOfLines={1}>{item.participant1Name} ↔ {item.participant2Name}</Text>
@@ -104,7 +105,13 @@ export default function ChatScreen() {
                 <Text style={[styles.convMeta, { color: colors.textMuted }]}>{item.messageCount} messages · {formatDate(item.lastMessageDate)}</Text>
               </View>
               {item.flaggedReason && <Text style={[styles.convFlag, { color: colors.warning }]}>⚠ {item.flaggedReason}</Text>}
+              {(item.status === 'flagged' || item.status === 'reported') && (
+                <TouchableOpacity onPress={() => Alert.alert('Review', `Reviewing flagged conversation`)} style={{ marginTop: 8, paddingVertical: 6, paddingHorizontal: 12, backgroundColor: colors.primary, borderRadius: 6, alignSelf: 'flex-start' }}>
+                  <Text style={{ color: '#FFF', fontSize: 12, fontWeight: '600' }}>Review</Text>
+                </TouchableOpacity>
+              )}
             </Card>
+            </TouchableOpacity>
           )}
           contentContainerStyle={styles.list}
         />

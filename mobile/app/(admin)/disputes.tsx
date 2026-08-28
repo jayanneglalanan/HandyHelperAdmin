@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../hooks/useTheme';
@@ -74,6 +74,7 @@ export default function DisputesScreen() {
           data={filtered}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => Alert.alert('Dispute Details', `${item.reason}\n\n${item.clientName} vs ${item.memberName}\n\n${item.description}`)} activeOpacity={0.7}>
             <Card style={{ marginBottom: 8 }}>
               <View style={styles.cardHeader}>
                 <Text style={[styles.reason, { color: colors.text }]}>{item.reason}</Text>
@@ -84,7 +85,18 @@ export default function DisputesScreen() {
               <Text style={[styles.desc, { color: colors.textSecondary }]} numberOfLines={2}>{item.description}</Text>
               <Text style={[styles.date, { color: colors.textMuted }]}>{formatDate(item.filedDate)}</Text>
               {item.resolution && <Text style={[styles.resolution, { color: colors.success }]}>✓ {item.resolution}</Text>}
+              {item.status === 'pending' && (
+                <TouchableOpacity onPress={() => Alert.alert('Review', `Reviewing dispute: ${item.reason}`)} style={{ marginTop: 8, paddingVertical: 6, paddingHorizontal: 12, backgroundColor: colors.primary, borderRadius: 6, alignSelf: 'flex-start' }}>
+                  <Text style={{ color: '#FFF', fontSize: 12, fontWeight: '600' }}>Review</Text>
+                </TouchableOpacity>
+              )}
+              {item.status === 'investigating' && (
+                <TouchableOpacity onPress={() => Alert.alert('Resolved', `Dispute resolved: ${item.reason}`)} style={{ marginTop: 8, paddingVertical: 6, paddingHorizontal: 12, backgroundColor: colors.success || '#059669', borderRadius: 6, alignSelf: 'flex-start' }}>
+                  <Text style={{ color: '#FFF', fontSize: 12, fontWeight: '600' }}>Resolve</Text>
+                </TouchableOpacity>
+              )}
             </Card>
+            </TouchableOpacity>
           )}
         />
       </View>

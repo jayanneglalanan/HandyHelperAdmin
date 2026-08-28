@@ -112,6 +112,14 @@ export default function ReviewsScreen() {
               </View>
               <Text style={[styles.reviewComment, { color: colors.text }]}>{item.comment}</Text>
               <Text style={[styles.reviewMeta, { color: colors.textMuted }]}>{item.reviewerName} → {item.reviewedMemberName} · {formatDate(item.date)}</Text>
+              <View style={{ flexDirection: 'row', gap: 8, marginTop: 8 }}>
+                <TouchableOpacity onPress={() => Alert.alert('Hidden', `Review hidden`)} style={{ paddingVertical: 4, paddingHorizontal: 10, borderRadius: 6, borderWidth: 1, borderColor: colors.border }}>
+                  <Text style={{ fontSize: 12, color: colors.textSecondary }}>Hide</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => Alert.alert('Flagged', `Review flagged`)} style={{ paddingVertical: 4, paddingHorizontal: 10, borderRadius: 6, borderWidth: 1, borderColor: colors.warning || '#F59E0B' }}>
+                  <Text style={{ fontSize: 12, color: colors.warning || '#F59E0B' }}>Flag</Text>
+                </TouchableOpacity>
+              </View>
             </Card>
           )}
         />

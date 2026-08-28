@@ -105,7 +105,7 @@ export default function SettingsScreen() {
             <Text style={[styles.sectionTitle, { color: colors.text, marginTop: 20 }]}>Accent Color</Text>
             <View style={styles.colorRow}>
               {['#1A1A1A', '#2563EB', '#059669', '#DC2626', '#7C3AED'].map((color) => (
-                <View key={color} style={[styles.colorDot, { backgroundColor: color }]} />
+                <TouchableOpacity key={color} onPress={() => Alert.alert('Accent Color', `Color ${color} selected`)} style={[styles.colorDot, { backgroundColor: color }]} />
               ))}
             </View>
           </View>

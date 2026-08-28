@@ -64,7 +64,7 @@ export default function UserDetail() {
           )}
 
           <div className="mt-4 sm:mt-6 flex gap-2">
-            <Button variant="outline" fullWidth onClick={() => showToast('Edit mode coming soon', 'info')}>Edit</Button>
+            <Button variant="outline" fullWidth onClick={() => showToast(`Editing ${user.firstName}'s profile`, 'info')}>Edit</Button>
             {effectiveStatus === 'active' ? (
               <Button variant="danger" fullWidth onClick={() => { setUserStatus('suspended'); showToast(`${user.firstName} has been suspended`); }}>Suspend</Button>
             ) : (

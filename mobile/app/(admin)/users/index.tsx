@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TextInput, TouchableOpacity, Modal, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TextInput, TouchableOpacity, Modal, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../hooks/useTheme';
@@ -8,6 +8,7 @@ import Card from '../../components/ui/Card';
 import Avatar from '../../components/ui/Avatar';
 import StatusBadge from '../../components/ui/StatusBadge';
 import { formatDate } from '../../../../shared/utils/formatters';
+import { useRouter } from 'expo-router';
 
 const roles = [
   { id: 'all', label: 'All' },
@@ -24,6 +25,7 @@ const statuses = [
 
 export default function UsersScreen() {
   const { colors } = useTheme();
+  const router = useRouter();
   const users = useUsers();
   const [search, setSearch] = useState('');
   const [roleFilter, setRoleFilter] = useState('all');
@@ -91,6 +93,7 @@ export default function UsersScreen() {
           data={filtered}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => router.push(`/users/${item.id}`)} activeOpacity={0.7}>
             <Card style={{ marginBottom: 8 }}>
               <View style={styles.userRow}>
                 <Avatar initials={`${item.firstName[0]}${item.lastName[0]}`} />
@@ -102,6 +105,7 @@ export default function UsersScreen() {
                 <StatusBadge status={item.status} />
               </View>
             </Card>
+            </TouchableOpacity>
           )}
           contentContainerStyle={styles.list}
         />

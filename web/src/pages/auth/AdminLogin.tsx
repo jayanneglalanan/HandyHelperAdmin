@@ -2,13 +2,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Lock, Mail, ShieldCheck } from 'lucide-react';
 import { useBrand } from '../../context/BrandContext';
+import { useToast } from '../../components/ui/Toast';
 
 export default function AdminLogin() {
   const navigate = useNavigate();
   const { brandName } = useBrand();
+  const { showToast } = useToast();
   const [email, setEmail] = useState('admin@handyhelper.com');
   const [password, setPassword] = useState('admin123');
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -107,11 +110,13 @@ export default function AdminLogin() {
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
                   className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-accent focus:ring-accent"
                 />
                 <span className="text-sm text-gray-600 dark:text-gray-400">Remember me</span>
               </label>
-              <button type="button" className="text-sm text-accent hover:text-accent-hover font-medium transition-colors duration-150" onClick={() => alert('Password reset link sent to your email')}>
+              <button type="button" className="text-sm text-accent hover:text-accent-hover font-medium transition-colors duration-150" onClick={() => showToast('Password reset link sent to your email', 'info')}>
                 Forgot password?
               </button>
             </div>

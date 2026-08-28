@@ -5,9 +5,10 @@ interface CardProps {
   className?: string;
   padding?: 'none' | 'sm' | 'md' | 'lg';
   style?: React.CSSProperties;
+  onClick?: () => void;
 }
 
-export default function Card({ children, className = '', padding = 'md', style }: CardProps) {
+export default function Card({ children, className = '', padding = 'md', style, onClick }: CardProps) {
   const paddings = {
     none: '',
     sm: 'p-4',
@@ -16,7 +17,7 @@ export default function Card({ children, className = '', padding = 'md', style }
   };
 
   return (
-    <div style={style} className={`bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 dark:bg-gray-800 dark:border-gray-700 ${paddings[padding]} ${className}`}>
+    <div onClick={onClick} style={style} className={`bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 dark:bg-gray-800 dark:border-gray-700 ${paddings[padding]} ${className} ${onClick ? 'cursor-pointer' : ''}`}>
       {children}
     </div>
   );

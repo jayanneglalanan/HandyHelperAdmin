@@ -48,18 +48,18 @@ export default function UserList() {
         </div>
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
           <SearchBar value={search} onChange={setSearch} placeholder="Search users..." className="sm:w-64" />
-          <div className="flex gap-2">
-            <Dropdown value={roleFilter} onChange={setRoleFilter} options={[
+          <div className="flex gap-2 sm:contents">
+            <Dropdown value={roleFilter} onChange={setRoleFilter} fullWidth className="sm:w-auto sm:flex-shrink-0" options={[
               { value: 'all', label: 'All Roles' },
               { value: 'client', label: 'Clients' },
               { value: 'member', label: 'Members' },
               { value: 'admin', label: 'Admin' }
-            ]} fullWidth />
-            <Dropdown value={statusFilter} onChange={setStatusFilter} options={[
+            ]} />
+            <Dropdown value={statusFilter} onChange={setStatusFilter} fullWidth className="sm:w-auto sm:flex-shrink-0" options={[
               { value: 'all', label: 'All Status' },
               { value: 'active', label: 'Active' },
               { value: 'suspended', label: 'Suspended' }
-            ]} fullWidth />
+            ]} />
           </div>
         </div>
       </div>

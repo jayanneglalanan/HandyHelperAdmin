@@ -46,6 +46,10 @@ export default function NotificationsScreen() {
     setReadIds(new Set(notifications.map(n => n.id)));
   };
 
+  const handleMarkRead = (id: string) => {
+    setReadIds(prev => new Set([...prev, id]));
+  };
+
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={['top']}>
       <View style={styles.content}>
@@ -78,6 +82,7 @@ export default function NotificationsScreen() {
           data={filtered}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => handleMarkRead(item.id)} activeOpacity={0.7}>
             <Card style={{ marginBottom: 8 }}>
               <View style={styles.notifRow}>
                 <Text style={styles.notifIcon}>{typeIcons[item.type]}</Text>
@@ -91,6 +96,7 @@ export default function NotificationsScreen() {
                 </View>
               </View>
             </Card>
+            </TouchableOpacity>
           )}
           contentContainerStyle={styles.list}
         />

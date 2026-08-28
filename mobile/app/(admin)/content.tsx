@@ -74,6 +74,14 @@ export default function ContentScreen() {
               </View>
               <Text style={[styles.itemSlug, { color: colors.textMuted }]}>{item.slug}</Text>
               <Text style={[styles.itemDate, { color: colors.textMuted }]}>Updated {formatDate(item.lastUpdated)}</Text>
+              <View style={{ flexDirection: 'row', gap: 6, marginTop: 8 }}>
+                <TouchableOpacity onPress={() => Alert.alert('Edit', `Editing "${item.title}"`)} style={{ paddingVertical: 4, paddingHorizontal: 10, borderRadius: 6, borderWidth: 1, borderColor: colors.border }}>
+                  <Text style={{ fontSize: 12, color: colors.textSecondary }}>Edit</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => Alert.alert('Delete', `Delete "${item.title}"?`)} style={{ paddingVertical: 4, paddingHorizontal: 10, borderRadius: 6, borderWidth: 1, borderColor: colors.error || '#DC2626' }}>
+                  <Text style={{ fontSize: 12, color: colors.error || '#DC2626' }}>Delete</Text>
+                </TouchableOpacity>
+              </View>
             </Card>
           )} />
         )}

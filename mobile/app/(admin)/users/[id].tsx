@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -18,6 +18,7 @@ export default function UserDetailScreen() {
   const users = useUsers();
   const jobs = useJobs();
   const reviews = useReviews();
+  const [userStatus, setUserStatus] = useState<string | null>(null);
 
   const user = users.find(u => u.id === id);
   if (!user) {
@@ -32,6 +33,7 @@ export default function UserDetailScreen() {
 
   const userJobs = jobs.filter(j => j.clientId === id || j.assignedMemberId === id);
   const userReviews = reviews.filter(r => r.reviewedMemberId === id);
+  const effectiveStatus = userStatus || user.status;
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={['top']}>
@@ -45,7 +47,22 @@ export default function UserDetailScreen() {
           <Avatar initials={`${user.firstName[0]}${user.lastName[0]}`} size="lg" />
           <Text style={[styles.name, { color: colors.text }]}>{user.firstName} {user.lastName}</Text>
           <Text style={[styles.role, { color: colors.textSecondary }]}>{user.role}</Text>
-          <StatusBadge status={user.status} />
+          <StatusBadge status={effectiveStatus} />
+        </View>
+
+        <View style={{ flexDirection: 'row', gap: 8, marginBottom: 16 }}>
+          <TouchableOpacity onPress={() => Alert.alert('Edit', 'Edit mode coming soon')} style={{ flex: 1, paddingVertical: 10, borderRadius: 8, borderWidth: 1, borderColor: colors.border, alignItems: 'center' }}>
+            <Text style={{ color: colors.text, fontSize: 14, fontWeight: '600' }}>Edit</Text>
+          </TouchableOpacity>
+          {effectiveStatus === 'active' ? (
+            <TouchableOpacity onPress={() => { setUserStatus('suspended'); Alert.alert('Suspended', `${user.firstName} has been suspended`); }} style={{ flex: 1, paddingVertical: 10, borderRadius: 8, backgroundColor: colors.error || '#DC2626', alignItems: 'center' }}>
+              <Text style={{ color: '#FFF', fontSize: 14, fontWeight: '600' }}>Suspend</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={() => { setUserStatus('active'); Alert.alert('Activated', `${user.firstName} has been activated`); }} style={{ flex: 1, paddingVertical: 10, borderRadius: 8, backgroundColor: colors.success || '#059669', alignItems: 'center' }}>
+              <Text style={{ color: '#FFF', fontSize: 14, fontWeight: '600' }}>Activate</Text>
+            </TouchableOpacity>
+          )}
         </View>
 
         <Card style={{ marginBottom: 12 }}>

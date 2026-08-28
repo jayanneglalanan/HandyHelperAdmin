@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Plus, X } from 'lucide-react';
+import { Plus, X, Edit, Trash2 } from 'lucide-react';
 import { Card, Tabs, Badge, Button, Dropdown, PageSkeleton } from '../../components/ui';
 import { useSubscriptions } from '../../hooks/useMockData';
 import { useLoading } from '../../hooks/useLoading';
@@ -69,6 +69,10 @@ export default function Subscriptions() {
                     <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">{sub.subscriberCount} subscribers</p>
                     <div className="mt-2 space-y-1">{sub.features.slice(0, 3).map((f: string, i: number) => <p key={i} className="text-[10px] text-gray-400 dark:text-gray-500">• {f}</p>)}</div>
                   </div>
+                  <div className="flex gap-1 shrink-0">
+                    <button onClick={() => showToast(`Editing "${sub.name}"`, 'info')} className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg dark:hover:bg-gray-700 min-w-[36px] min-h-[36px] flex items-center justify-center"><Edit size={14} /></button>
+                    <button onClick={() => { if (confirm(`Delete "${sub.name}"?`)) { setCustomItems(prev => prev.filter(i => i.id !== sub.id)); showToast(`"${sub.name}" deleted`); } }} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg dark:hover:bg-red-900/20 min-w-[36px] min-h-[36px] flex items-center justify-center"><Trash2 size={14} /></button>
+                  </div>
                 </div>
               </Card>
             ))}
@@ -95,7 +99,7 @@ export default function Subscriptions() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Price (₱) *</label>
+                <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Price ($) *</label>
                 <input type="number" value={form.price} onChange={e => setForm(f => ({ ...f, price: e.target.value }))} className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="0" min="0" />
               </div>
               <div>

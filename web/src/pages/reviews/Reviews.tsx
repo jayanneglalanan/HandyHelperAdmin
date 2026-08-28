@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { Star } from 'lucide-react';
+import { Star, EyeOff, Flag } from 'lucide-react';
 import { Card, SearchBar, Dropdown, Badge, PageSkeleton } from '../../components/ui';
 import { useReviews } from '../../hooks/useMockData';
 import { useLoading } from '../../hooks/useLoading';
+import { useToast } from '../../components/ui/Toast';
 import { formatDate } from '@shared/utils/formatters';
 
 export default function Reviews() {
   const loading = useLoading(800);
   const reviews = useReviews();
+  const { showToast } = useToast();
   const [search, setSearch] = useState('');
   const [ratingFilter, setRatingFilter] = useState('0');
 
@@ -66,6 +68,10 @@ export default function Reviews() {
                   <span className="text-xs text-gray-400">{formatDate(review.date)}</span>
                   <Badge variant={review.status === 'visible' ? 'success' : 'error'}>{review.status}</Badge>
                 </div>
+              </div>
+              <div className="flex gap-1 shrink-0">
+                <button onClick={() => showToast(`Hiding review by ${review.reviewerName}`, 'info')} className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg dark:hover:bg-gray-700 min-w-[36px] min-h-[36px] flex items-center justify-center"><EyeOff size={14} /></button>
+                <button onClick={() => showToast(`Flagging review by ${review.reviewerName}`, 'info')} className="p-2 text-gray-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg dark:hover:bg-amber-900/20 min-w-[36px] min-h-[36px] flex items-center justify-center"><Flag size={14} /></button>
               </div>
             </div>
           </Card>

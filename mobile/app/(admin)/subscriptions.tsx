@@ -55,11 +55,19 @@ export default function SubscriptionsScreen() {
                 <Text style={[styles.planName, { color: colors.text }]}>{item.name}</Text>
                 <Badge>{item.subscriberCount} subscribers</Badge>
               </View>
-              <Text style={[styles.price, { color: colors.text }]}>{item.price === 0 ? 'Free' : `₱${item.price}/${item.duration}`}</Text>
+              <Text style={[styles.price, { color: colors.text }]}>{item.price === 0 ? 'Free' : `$${item.price}/${item.duration}`}</Text>
               <View style={styles.features}>
                 {item.features.slice(0, 4).map((f: string, i: number) => (
                   <Text key={i} style={[styles.feature, { color: colors.textSecondary }]}>✓ {f}</Text>
                 ))}
+              </View>
+              <View style={{ flexDirection: 'row', gap: 6, marginTop: 8 }}>
+                <TouchableOpacity onPress={() => Alert.alert('Edit', `Editing "${item.name}"`)} style={{ paddingVertical: 4, paddingHorizontal: 10, borderRadius: 6, borderWidth: 1, borderColor: colors.border }}>
+                  <Text style={{ fontSize: 12, color: colors.textSecondary }}>Edit</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => Alert.alert('Delete', `Delete "${item.name}"?`)} style={{ paddingVertical: 4, paddingHorizontal: 10, borderRadius: 6, borderWidth: 1, borderColor: colors.error || '#DC2626' }}>
+                  <Text style={{ fontSize: 12, color: colors.error || '#DC2626' }}>Delete</Text>
+                </TouchableOpacity>
               </View>
             </Card>
           )}
@@ -81,7 +89,7 @@ export default function SubscriptionsScreen() {
             <TextInput style={[styles.input, { backgroundColor: colors.surface, borderColor: colors.border, color: colors.text }]} value={form.name} onChangeText={v => setForm(f => ({ ...f, name: v }))} placeholder="e.g. Basic" placeholderTextColor={colors.textMuted} />
             <View style={styles.row}>
               <View style={{ flex: 1 }}>
-                <Text style={[styles.label, { color: colors.textSecondary }]}>Price (₱) *</Text>
+                <Text style={[styles.label, { color: colors.textSecondary }]}>Price ($) *</Text>
                 <TextInput style={[styles.input, { backgroundColor: colors.surface, borderColor: colors.border, color: colors.text }]} value={form.price} onChangeText={v => setForm(f => ({ ...f, price: v }))} placeholder="0" placeholderTextColor={colors.textMuted} keyboardType="numeric" />
               </View>
               <View style={{ flex: 1, marginLeft: 10 }}>
