@@ -1,96 +1,137 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../hooks/useTheme';
 
 export default function LoginScreen() {
   const router = useRouter();
   const { colors } = useTheme();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin@handyhelper.com');
+  const [password, setPassword] = useState('admin123');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       setError('Please fill in all fields');
       return;
     }
+    setLoading(true);
+    setError('');
+
+    await new Promise(r => setTimeout(r, 800));
+
     if (email === 'admin@handyhelper.com' && password === 'admin123') {
       router.replace('/(admin)');
     } else {
       setError('Invalid email or password');
     }
+    setLoading(false);
   };
 
   return (
     <KeyboardAvoidingView
-      style={[styles.container, { backgroundColor: colors.background }]}
+      style={[styles.container, { backgroundColor: '#F5F5F5' }]}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
+        {/* Header */}
         <View style={styles.header}>
-          <View style={[styles.logo, { backgroundColor: colors.primary }]}>
-            <Text style={[styles.logoText, { color: colors.white }]}>HH</Text>
+          <View style={[styles.iconContainer]}>
+            <Ionicons name="shield-checkmark" size={40} color={colors.accent || '#5B4BDB'} />
           </View>
-          <Text style={[styles.title, { color: colors.text }]}>HandyHelper Admin</Text>
-          <Text style={[styles.subtitle, { color: colors.textSecondary }]}>Sign in to your account</Text>
+          <Text style={[styles.title, { color: colors.text }]}>HandyHelper</Text>
+          <Text style={[styles.subtitle, { color: colors.textSecondary }]}>Admin Dashboard</Text>
         </View>
 
-        <View style={[styles.form, { backgroundColor: colors.white, borderColor: colors.border }]}>
+        {/* Material Card */}
+        <View style={[styles.card, { backgroundColor: colors.white }]}>
           {error ? (
-            <View style={[styles.errorContainer, { backgroundColor: colors.errorLight }]}>
-              <Text style={[styles.errorText, { color: colors.error }]}>{error}</Text>
+            <View style={[styles.errorBanner]}>
+              <Ionicons name="alert-circle" size={18} color={colors.danger} />
+              <Text style={[styles.errorText, { color: colors.danger }]}>{error}</Text>
             </View>
           ) : null}
 
-          <Text style={[styles.label, { color: colors.textSecondary }]}>Email</Text>
-          <TextInput
-            style={[styles.input, { backgroundColor: colors.surface, borderColor: colors.border, color: colors.text }]}
-            placeholder="admin@handyhelper.com"
-            placeholderTextColor={colors.textMuted}
-            value={email}
-            onChangeText={(t) => { setEmail(t); setError(''); }}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-
-          <Text style={[styles.label, { color: colors.textSecondary }]}>Password</Text>
-          <View style={styles.passwordContainer}>
-            <TextInput
-              style={[styles.input, { backgroundColor: colors.surface, borderColor: colors.border, color: colors.text, flex: 1 }]}
-              placeholder="Enter your password"
-              placeholderTextColor={colors.textMuted}
-              value={password}
-              onChangeText={(t) => { setPassword(t); setError(''); }}
-              secureTextEntry={!showPassword}
-            />
-            <TouchableOpacity
-              onPress={() => setShowPassword(!showPassword)}
-              style={styles.eyeButton}
-            >
-              <Text style={{ color: colors.textMuted }}>{showPassword ? 'Hide' : 'Show'}</Text>
-            </TouchableOpacity>
+          {/* Email Field */}
+          <View style={styles.inputGroup}>
+            <Text style={[styles.label, { color: colors.textSecondary }]}>Email</Text>
+            <View style={[styles.inputWrapper, { borderColor: error ? colors.danger : colors.border }]}>
+              <Ionicons name="mail-outline" size={18} color={colors.textMuted} style={styles.inputIcon} />
+              <TextInput
+                style={[styles.input, { color: colors.text }]}
+                placeholder="Email address"
+                placeholderTextColor={colors.textMuted}
+                value={email}
+                onChangeText={(t) => { setEmail(t); setError(''); }}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+            </View>
           </View>
 
-          <View style={styles.rememberRow}>
-            <TouchableOpacity style={styles.remember}>
-              <View style={[styles.checkbox, { borderColor: colors.border }]} />
-              <Text style={[styles.rememberText, { color: colors.textSecondary }]}>Remember me</Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={[styles.forgotText, { color: colors.textSecondary }]}>Forgot password?</Text>
-            </TouchableOpacity>
+          {/* Password Field */}
+          <View style={styles.inputGroup}>
+            <Text style={[styles.label, { color: colors.textSecondary }]}>Password</Text>
+            <View style={[styles.inputWrapper, { borderColor: colors.border }]}>
+              <Ionicons name="lock-closed-outline" size={18} color={colors.textMuted} style={styles.inputIcon} />
+              <TextInput
+                style={[styles.input, { color: colors.text, flex: 1 }]}
+                placeholder="Password"
+                placeholderTextColor={colors.textMuted}
+                value={password}
+                onChangeText={(t) => { setPassword(t); setError(''); }}
+                secureTextEntry={!showPassword}
+              />
+              <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                style={styles.eyeButton}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              >
+                <Ionicons
+                  name={showPassword ? 'eye-off-outline' : 'eye-outline'}
+                  size={20}
+                  color={colors.textMuted}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
 
+          {/* Forgot Password */}
+          <TouchableOpacity style={styles.forgotButton}>
+            <Text style={[styles.forgotText, { color: colors.accent || '#5B4BDB' }]}>
+              Forgot password?
+            </Text>
+          </TouchableOpacity>
+
+          {/* Submit Button */}
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: colors.primary }]}
+            style={[styles.button, { backgroundColor: colors.accent || '#5B4BDB' }]}
             onPress={handleLogin}
+            disabled={loading}
+            activeOpacity={0.8}
           >
-            <Text style={[styles.buttonText, { color: colors.white }]}>Sign In</Text>
+            {loading ? (
+              <ActivityIndicator color="#FFFFFF" size="small" />
+            ) : (
+              <Text style={styles.buttonText}>Sign In</Text>
+            )}
           </TouchableOpacity>
         </View>
 
+        {/* Demo Credentials */}
         <Text style={[styles.demo, { color: colors.textMuted }]}>
           Demo: admin@handyhelper.com / admin123
         </Text>
@@ -112,92 +153,107 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 32,
   },
-  logo: {
-    width: 64,
-    height: 64,
-    borderRadius: 16,
+  iconContainer: {
+    width: 72,
+    height: 72,
+    borderRadius: 20,
+    backgroundColor: '#EDE9FE',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
-  },
-  logoText: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    shadowColor: '#5B4BDB',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
   },
   title: {
-    fontSize: 22,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '600',
+    letterSpacing: -0.3,
   },
   subtitle: {
     fontSize: 14,
     marginTop: 4,
   },
-  form: {
+  card: {
     borderRadius: 16,
-    borderWidth: 1,
-    padding: 20,
+    padding: 24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    elevation: 3,
   },
-  errorContainer: {
-    padding: 10,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  errorText: {
-    fontSize: 13,
-  },
-  label: {
-    fontSize: 14,
-    fontWeight: '500',
-    marginBottom: 6,
-  },
-  input: {
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    fontSize: 15,
-    marginBottom: 16,
-  },
-  passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  eyeButton: {
-    position: 'absolute',
-    right: 14,
-    padding: 4,
-  },
-  rememberRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  remember: {
+  errorBanner: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    padding: 12,
+    backgroundColor: '#FEE2E2',
+    borderLeftWidth: 3,
+    borderLeftColor: '#D64545',
+    borderRadius: 8,
+    marginBottom: 20,
   },
-  checkbox: {
-    width: 16,
-    height: 16,
-    borderWidth: 1,
-    borderRadius: 4,
-  },
-  rememberText: {
+  errorText: {
     fontSize: 13,
+    flex: 1,
+  },
+  inputGroup: {
+    marginBottom: 16,
+  },
+  label: {
+    fontSize: 13,
+    fontWeight: '500',
+    marginBottom: 6,
+    marginLeft: 2,
+  },
+  inputWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderRadius: 10,
+    backgroundColor: '#FAFAFA',
+  },
+  inputIcon: {
+    paddingLeft: 14,
+  },
+  input: {
+    flex: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 14,
+    fontSize: 15,
+  },
+  eyeButton: {
+    paddingRight: 14,
+  },
+  forgotButton: {
+    alignSelf: 'flex-end',
+    marginBottom: 20,
+    marginTop: -4,
   },
   forgotText: {
     fontSize: 13,
+    fontWeight: '500',
   },
   button: {
-    paddingVertical: 14,
-    borderRadius: 12,
+    paddingVertical: 15,
+    borderRadius: 10,
     alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#5B4BDB',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 4,
+    minHeight: 50,
   },
   buttonText: {
+    color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
+    letterSpacing: 0.3,
   },
   demo: {
     textAlign: 'center',

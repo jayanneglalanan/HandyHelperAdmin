@@ -42,7 +42,7 @@ interface CardTitleProps {
 
 export function CardTitle({ children, className = '' }: CardTitleProps) {
   return (
-    <h3 className={`text-lg font-semibold text-gray-900 dark:text-white ${className}`}>
+    <h3 className={`text-xs font-semibold text-gray-900 dark:text-white ${className}`}>
       {children}
     </h3>
   );
