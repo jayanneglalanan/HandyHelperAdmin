@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Star } from 'lucide-react';
-import { Card, SearchBar, Badge, PageSkeleton } from '../../components/ui';
+import { Card, SearchBar, Dropdown, Badge, PageSkeleton } from '../../components/ui';
 import { useReviews } from '../../hooks/useMockData';
 import { useLoading } from '../../hooks/useLoading';
 import { formatDate } from '@shared/utils/formatters';
@@ -9,12 +9,12 @@ export default function Reviews() {
   const loading = useLoading(800);
   const reviews = useReviews();
   const [search, setSearch] = useState('');
-  const [ratingFilter, setRatingFilter] = useState(0);
+  const [ratingFilter, setRatingFilter] = useState('0');
 
   const filtered = reviews.filter(r => {
     const matchesSearch = r.reviewerName.toLowerCase().includes(search.toLowerCase()) ||
       r.reviewedMemberName.toLowerCase().includes(search.toLowerCase());
-    const matchesRating = ratingFilter === 0 || r.rating === ratingFilter;
+    const matchesRating = ratingFilter === '0' || r.rating === Number(ratingFilter);
     return matchesSearch && matchesRating;
   });
 
@@ -35,16 +35,14 @@ export default function Reviews() {
         </div>
         <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
           <SearchBar value={search} onChange={setSearch} placeholder="Search reviews..." className="flex-1 sm:flex-none sm:w-48" />
-          <select
-            value={ratingFilter}
-            onChange={(e) => setRatingFilter(Number(e.target.value))}
-            className="px-3 py-2.5 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 min-h-[40px]"
-          >
-            <option value={0}>All Ratings</option>
-            {[5, 4, 3, 2, 1].map(r => (
-              <option key={r} value={r}>{r} Stars</option>
-            ))}
-          </select>
+          <Dropdown value={ratingFilter} onChange={setRatingFilter} options={[
+            { value: '0', label: 'All Ratings' },
+            { value: '5', label: '5 Stars' },
+            { value: '4', label: '4 Stars' },
+            { value: '3', label: '3 Stars' },
+            { value: '2', label: '2 Stars' },
+            { value: '1', label: '1 Star' }
+          ]} />
         </div>
       </div>
 

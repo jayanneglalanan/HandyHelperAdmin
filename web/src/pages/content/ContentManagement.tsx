@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Edit, Trash2, Plus, Eye, X } from 'lucide-react';
-import { Card, Button, SearchBar, Badge, PageSkeleton } from '../../components/ui';
+import { Card, Button, SearchBar, Dropdown, Badge, PageSkeleton } from '../../components/ui';
 import { useContent } from '../../hooks/useMockData';
 import { useLoading } from '../../hooks/useLoading';
 import { useToast } from '../../components/ui/Toast';
@@ -108,21 +108,21 @@ export default function ContentManagement() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Type</label>
-                <select value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))} className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                  <option value="faq">FAQ</option>
-                  <option value="announcement">Announcement</option>
-                  <option value="help">Help</option>
-                  <option value="terms">Terms</option>
-                  <option value="privacy">Privacy</option>
-                  <option value="homepage">Homepage</option>
-                </select>
+                <Dropdown value={form.type} onChange={v => setForm(f => ({ ...f, type: v }))} fullWidth options={[
+                  { value: 'faq', label: 'FAQ' },
+                  { value: 'announcement', label: 'Announcement' },
+                  { value: 'help', label: 'Help' },
+                  { value: 'terms', label: 'Terms' },
+                  { value: 'privacy', label: 'Privacy' },
+                  { value: 'homepage', label: 'Homepage' }
+                ]} />
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Status</label>
-                <select value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))} className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                  <option value="draft">Draft</option>
-                  <option value="published">Published</option>
-                </select>
+                <Dropdown value={form.status} onChange={v => setForm(f => ({ ...f, status: v }))} fullWidth options={[
+                  { value: 'draft', label: 'Draft' },
+                  { value: 'published', label: 'Published' }
+                ]} />
               </div>
             </div>
             <div>

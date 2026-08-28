@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Plus, X } from 'lucide-react';
-import { Card, Tabs, Badge, Button, PageSkeleton } from '../../components/ui';
+import { Card, Tabs, Badge, Button, Dropdown, PageSkeleton } from '../../components/ui';
 import { useSubscriptions } from '../../hooks/useMockData';
 import { useLoading } from '../../hooks/useLoading';
 import { useToast } from '../../components/ui/Toast';
@@ -100,10 +100,10 @@ export default function Subscriptions() {
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Duration</label>
-                <select value={form.duration} onChange={e => setForm(f => ({ ...f, duration: e.target.value }))} className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                  <option value="monthly">Monthly</option>
-                  <option value="yearly">Yearly</option>
-                </select>
+                <Dropdown value={form.duration} onChange={v => setForm(f => ({ ...f, duration: v }))} fullWidth options={[
+                  { value: 'monthly', label: 'Monthly' },
+                  { value: 'yearly', label: 'Yearly' }
+                ]} />
               </div>
             </div>
             <div>

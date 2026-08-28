@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Eye } from 'lucide-react';
-import { Card, SearchBar, PageSkeleton } from '../../components/ui';
+import { Card, SearchBar, Dropdown, PageSkeleton } from '../../components/ui';
 import ResponsiveTable from '../../components/ui/ResponsiveTable';
 import { useAuditLogs } from '../../hooks/useMockData';
 import { useLoading } from '../../hooks/useLoading';
@@ -32,10 +32,10 @@ export default function AuditLogs() {
         </div>
         <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
           <SearchBar value={search} onChange={setSearch} placeholder="Search logs..." className="flex-1 sm:flex-none sm:w-48" />
-          <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)} className="px-3 py-2.5 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 min-h-[40px]">
-            <option value="all">All Actions</option>
-            {actionTypes.map(t => <option key={t} value={t}>{t}</option>)}
-          </select>
+          <Dropdown value={typeFilter} onChange={setTypeFilter} options={[
+            { value: 'all', label: 'All Actions' },
+            ...actionTypes.map(t => ({ value: t, label: t }))
+          ]} />
         </div>
       </div>
 

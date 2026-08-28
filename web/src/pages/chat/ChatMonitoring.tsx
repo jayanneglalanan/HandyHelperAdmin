@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MessageSquare, AlertTriangle } from 'lucide-react';
-import { Card, SearchBar, Badge, Button } from '../../components/ui';
+import { Card, SearchBar, Dropdown, Badge, Button } from '../../components/ui';
 import { useConversations } from '../../hooks/useMockData';
 import { useToast } from '../../components/ui/Toast';
 import { formatDate } from '@shared/utils/formatters';
@@ -26,11 +26,11 @@ export default function ChatMonitoring() {
         </div>
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
           <SearchBar value={search} onChange={setSearch} placeholder="Search conversations..." className="sm:w-64" />
-          <select value={flagFilter} onChange={(e) => setFlagFilter(e.target.value)} className="px-3 py-2.5 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 min-h-[40px]">
-            <option value="all">All</option>
-            <option value="flagged">Flagged</option>
-            <option value="normal">Normal</option>
-          </select>
+          <Dropdown value={flagFilter} onChange={setFlagFilter} options={[
+            { value: 'all', label: 'All' },
+            { value: 'flagged', label: 'Flagged' },
+            { value: 'normal', label: 'Normal' }
+          ]} />
         </div>
       </div>
 

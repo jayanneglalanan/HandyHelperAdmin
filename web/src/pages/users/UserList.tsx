@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, Edit, Ban, CheckCircle } from 'lucide-react';
-import { Card, SearchBar, StatusBadge, Avatar, PageSkeleton } from '../../components/ui';
+import { Card, SearchBar, Dropdown, StatusBadge, Avatar, PageSkeleton } from '../../components/ui';
 import ResponsiveTable from '../../components/ui/ResponsiveTable';
 import { useUsers } from '../../hooks/useMockData';
 import { useLoading } from '../../hooks/useLoading';
@@ -49,17 +49,17 @@ export default function UserList() {
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
           <SearchBar value={search} onChange={setSearch} placeholder="Search users..." className="sm:w-64" />
           <div className="flex gap-2">
-            <select value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} className="flex-1 sm:flex-none px-3 py-2.5 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 min-h-[40px]">
-              <option value="all">All Roles</option>
-              <option value="client">Clients</option>
-              <option value="member">Members</option>
-              <option value="admin">Admin</option>
-            </select>
-            <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="flex-1 sm:flex-none px-3 py-2.5 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 min-h-[40px]">
-              <option value="all">All Status</option>
-              <option value="active">Active</option>
-              <option value="suspended">Suspended</option>
-            </select>
+            <Dropdown value={roleFilter} onChange={setRoleFilter} options={[
+              { value: 'all', label: 'All Roles' },
+              { value: 'client', label: 'Clients' },
+              { value: 'member', label: 'Members' },
+              { value: 'admin', label: 'Admin' }
+            ]} fullWidth />
+            <Dropdown value={statusFilter} onChange={setStatusFilter} options={[
+              { value: 'all', label: 'All Status' },
+              { value: 'active', label: 'Active' },
+              { value: 'suspended', label: 'Suspended' }
+            ]} fullWidth />
           </div>
         </div>
       </div>
