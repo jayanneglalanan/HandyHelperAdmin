@@ -16,6 +16,7 @@ import {
   History,
   X,
 } from 'lucide-react';
+import { useBrand } from '../../context/BrandContext';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -70,6 +71,7 @@ const bottomNavPaths = ['/', '/users', '/verification', '/jobs'];
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const location = useLocation();
+  const { brandName } = useBrand();
   const [expandedItems, setExpandedItems] = useState<string[]>(['/users', '/jobs', '/reports']);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -111,7 +113,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               <span className="text-white font-bold text-sm">HH</span>
             </div>
             <div>
-              <h1 className="text-sm font-bold text-gray-900 dark:text-white">HandyHelper</h1>
+              <h1 className="text-sm font-bold text-gray-900 dark:text-white">{brandName}</h1>
               <p className="text-xs text-gray-400 dark:text-gray-500">Admin Panel</p>
             </div>
           </div>

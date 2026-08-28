@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import { BrandProvider } from './context/BrandContext';
+import { ToastProvider } from './components/ui/Toast';
 import AdminLayout from './components/layout/AdminLayout';
 import AdminLogin from './pages/auth/AdminLogin';
 import Dashboard from './pages/dashboard/Dashboard';
@@ -22,30 +24,34 @@ import Settings from './pages/settings/Settings';
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<AdminLogin />} />
-          <Route path="/" element={<AdminLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="users" element={<UserList />} />
-            <Route path="users/:id" element={<UserDetail />} />
-            <Route path="verification" element={<MemberVerification />} />
-            <Route path="jobs" element={<JobList />} />
-            <Route path="jobs/:id" element={<JobDetail />} />
-            <Route path="categories" element={<Categories />} />
-            <Route path="subscriptions" element={<Subscriptions />} />
-            <Route path="reviews" element={<Reviews />} />
-            <Route path="reports" element={<ReportList />} />
-            <Route path="disputes" element={<DisputeList />} />
-            <Route path="advanced-reports" element={<AdvancedReports />} />
-            <Route path="analytics" element={<Analytics />} />
-            <Route path="content" element={<ContentManagement />} />
-            <Route path="audit-logs" element={<AuditLogs />} />
-            <Route path="settings" element={<Settings />} />
-          </Route>
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
+      <BrandProvider>
+        <ToastProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/login" element={<AdminLogin />} />
+              <Route path="/" element={<AdminLayout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="users" element={<UserList />} />
+                <Route path="users/:id" element={<UserDetail />} />
+                <Route path="verification" element={<MemberVerification />} />
+                <Route path="jobs" element={<JobList />} />
+                <Route path="jobs/:id" element={<JobDetail />} />
+                <Route path="categories" element={<Categories />} />
+                <Route path="subscriptions" element={<Subscriptions />} />
+                <Route path="reviews" element={<Reviews />} />
+                <Route path="reports" element={<ReportList />} />
+                <Route path="disputes" element={<DisputeList />} />
+                <Route path="advanced-reports" element={<AdvancedReports />} />
+                <Route path="analytics" element={<Analytics />} />
+                <Route path="content" element={<ContentManagement />} />
+                <Route path="audit-logs" element={<AuditLogs />} />
+                <Route path="settings" element={<Settings />} />
+              </Route>
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </BrowserRouter>
+        </ToastProvider>
+      </BrandProvider>
     </ThemeProvider>
   );
 }

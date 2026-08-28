@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, Bell, Sun, Moon, ChevronDown, CheckCheck } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import { useBrand } from '../../context/BrandContext';
 import { useNotifications } from '../../hooks/useMockData';
 import Avatar from '../ui/Avatar';
 
@@ -30,6 +31,7 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const { brandName } = useBrand();
   const notifications = useNotifications();
   const [readIds, setReadIds] = useState<Set<string>>(new Set());
   const unreadCount = notifications.filter(n => !n.read && !readIds.has(n.id)).length;
@@ -63,7 +65,7 @@ export default function TopBar({ onMenuClick }: TopBarProps) {
     const path = location.pathname;
     if (path.startsWith('/users/')) return 'User Details';
     if (path.startsWith('/jobs/')) return 'Job Details';
-    return pageTitles[path] || 'HandyHelper';
+    return pageTitles[path] || brandName;
   };
 
   return (

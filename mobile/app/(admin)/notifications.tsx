@@ -18,48 +18,61 @@ const typeIcons: Record<string, string> = {
   system: '🔧',
 };
 
+const tabList = [
+  { id: 'all', label: 'All' },
+  { id: 'unread', label: 'Unread' },
+];
+
 export default function NotificationsScreen() {
   const { colors } = useTheme();
   const notifications = useNotifications();
   const [filter, setFilter] = useState('all');
+  const [readIds, setReadIds] = useState<Set<string>>(new Set());
 
-  const unreadCount = notifications.filter(n => !n.read).length;
+  const isRead = (n: any) => n.read || readIds.has(n.id);
+  const unreadCount = notifications.filter(n => !isRead(n)).length;
+
+  const tabCounts = {
+    all: notifications.length,
+    unread: unreadCount,
+  };
 
   const filtered = notifications.filter(n => {
-    if (filter === 'all') return true;
-    if (filter === 'unread') return !n.read;
-    return n.type === filter;
+    if (filter === 'unread') return !isRead(n);
+    return true;
   });
+
+  const handleMarkAllRead = () => {
+    setReadIds(new Set(notifications.map(n => n.id)));
+  };
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={['top']}>
       <View style={styles.content}>
         <View style={styles.header}>
           <Text style={[styles.title, { color: colors.text }]}>Notifications</Text>
-          <Badge variant="info">{unreadCount} unread</Badge>
+          <TouchableOpacity onPress={handleMarkAllRead} style={[styles.markAllBtn, { borderColor: colors.border }]}>
+            <Ionicons name="checkmark-done" size={14} color={colors.primary} />
+            <Text style={[styles.markAllText, { color: colors.primary }]}>Mark All Read</Text>
+          </TouchableOpacity>
         </View>
 
-        <View style={styles.filters}>
-          {['all', 'unread', 'job', 'report', 'system'].map((f) => (
-            <TouchableOpacity
-              key={f}
-              onPress={() => setFilter(f)}
-              style={[
-                styles.filter,
-                {
-                  backgroundColor: filter === f ? colors.primary : colors.surface,
-                },
-              ]}
-            >
-              <Text style={[
-                styles.filterText,
-                { color: filter === f ? colors.white : colors.textSecondary },
-              ]}>
-                {f.charAt(0).toUpperCase() + f.slice(1)}
-              </Text>
+        <FlatList
+          horizontal
+          data={tabList}
+          keyExtractor={(item) => item.id}
+          showsHorizontalScrollIndicator={false}
+          style={styles.tabs}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => setFilter(item.id)} style={styles.tab}>
+              <Text style={[styles.tabText, { color: filter === item.id ? colors.primary : colors.textSecondary }]}>{item.label}</Text>
+              {filter === item.id && <View style={[styles.tabUnderline, { backgroundColor: colors.primary }]} />}
+              <View style={[styles.tabBadge, { backgroundColor: filter === item.id ? colors.primary : colors.surface }]}>
+                <Text style={[styles.tabBadgeText, { color: filter === item.id ? '#FFF' : colors.textSecondary }]}>{tabCounts[item.id as keyof typeof tabCounts]}</Text>
+              </View>
             </TouchableOpacity>
-          ))}
-        </View>
+          )}
+        />
 
         <FlatList
           data={filtered}
@@ -70,14 +83,10 @@ export default function NotificationsScreen() {
                 <Text style={styles.notifIcon}>{typeIcons[item.type]}</Text>
                 <View style={styles.notifInfo}>
                   <View style={styles.notifHeader}>
-                    <Text style={[styles.notifTitle, { color: colors.text }]} numberOfLines={1}>
-                      {item.title}
-                    </Text>
-                    {!item.read && <View style={styles.unreadDot} />}
+                    <Text style={[styles.notifTitle, { color: colors.text }]} numberOfLines={1}>{item.title}</Text>
+                    {!isRead(item) && <View style={styles.unreadDot} />}
                   </View>
-                  <Text style={[styles.notifMessage, { color: colors.textSecondary }]} numberOfLines={2}>
-                    {item.message}
-                  </Text>
+                  <Text style={[styles.notifMessage, { color: colors.textSecondary }]} numberOfLines={2}>{item.message}</Text>
                   <Text style={[styles.notifTime, { color: colors.textMuted }]}>{timeAgo(item.date)}</Text>
                 </View>
               </View>
@@ -95,9 +104,14 @@ const styles = StyleSheet.create({
   content: { flex: 1, padding: 16 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 },
   title: { fontSize: 24, fontWeight: 'bold' },
-  filters: { flexDirection: 'row', gap: 8, marginBottom: 12 },
-  filter: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8 },
-  filterText: { fontSize: 13, fontWeight: '500' },
+  markAllBtn: { flexDirection: 'row', alignItems: 'center', gap: 4, borderWidth: 1, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6 },
+  markAllText: { fontSize: 12, fontWeight: '600' },
+  tabs: { marginBottom: 12 },
+  tab: { alignItems: 'center', paddingHorizontal: 12, paddingVertical: 8, marginRight: 8, position: 'relative' },
+  tabText: { fontSize: 13, fontWeight: '600' },
+  tabUnderline: { position: 'absolute', bottom: 0, left: 0, right: 0, height: 2 },
+  tabBadge: { marginTop: 4, paddingHorizontal: 6, paddingVertical: 1, borderRadius: 8 },
+  tabBadgeText: { fontSize: 10, fontWeight: '600' },
   list: { paddingBottom: 20 },
   notifRow: { flexDirection: 'row', gap: 12 },
   notifIcon: { fontSize: 20 },

@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Lock, Mail, ShieldCheck } from 'lucide-react';
+import { useBrand } from '../../context/BrandContext';
 
 export default function AdminLogin() {
   const navigate = useNavigate();
+  const { brandName } = useBrand();
   const [email, setEmail] = useState('admin@handyhelper.com');
   const [password, setPassword] = useState('admin123');
   const [showPassword, setShowPassword] = useState(false);
@@ -48,7 +50,7 @@ export default function AdminLogin() {
             <ShieldCheck size={32} className="text-white" />
           </div>
           <h1 className="text-2xl font-medium text-gray-900 dark:text-white">
-            HandyHelper
+            {brandName}
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Admin Dashboard
@@ -109,7 +111,7 @@ export default function AdminLogin() {
                 />
                 <span className="text-sm text-gray-600 dark:text-gray-400">Remember me</span>
               </label>
-              <button type="button" className="text-sm text-accent hover:text-accent-hover font-medium transition-colors duration-150">
+              <button type="button" className="text-sm text-accent hover:text-accent-hover font-medium transition-colors duration-150" onClick={() => alert('Password reset link sent to your email')}>
                 Forgot password?
               </button>
             </div>

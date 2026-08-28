@@ -1,4 +1,5 @@
 export const APP_NAME = 'HandyHelper Admin';
+export const BRAND_NAME = 'HandyHelper';
 export const APP_VERSION = '1.0.0';
 
 export const ROUTES = {
