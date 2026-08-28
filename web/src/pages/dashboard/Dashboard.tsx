@@ -3,10 +3,8 @@ import { Card, CardTitle, DashboardStatsSkeleton, ChartSkeleton, CardSkeleton } 
 import { useAnalytics, useJobs, useReports, useReviews, useSubscriptions } from '../../hooks/useMockData';
 import { useLoading } from '../../hooks/useLoading';
 import { formatCurrency } from '@shared/utils/formatters';
-import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
-  const navigate = useNavigate();
   const loading = useLoading(1000);
   const analytics = useAnalytics();
   const jobs = useJobs();
@@ -22,12 +20,12 @@ export default function Dashboard() {
   const subscriptionRevenue = subscriptions.reduce((sum, sub) => sum + sub.price * sub.subscriberCount, 0);
 
   const stats = [
-    { label: 'Total Users', value: totalUsers.toLocaleString(), icon: Users, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20', path: '/users' },
-    { label: 'Active Jobs', value: activeJobs.toLocaleString(), icon: Briefcase, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20', path: '/jobs' },
-    { label: 'Completed', value: analytics.jobStats.completed.toLocaleString(), icon: DollarSign, color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-900/20', path: '/jobs' },
-    { label: 'Avg Rating', value: avgRating.toFixed(1), icon: TrendingUp, color: 'text-yellow-500', bg: 'bg-yellow-50 dark:bg-yellow-900/20', path: '/reviews' },
-    { label: 'Disputes', value: pendingReports.toLocaleString(), icon: AlertTriangle, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-900/20', path: '/reports' },
-    { label: 'Subscription Revenue', value: formatCurrency(subscriptionRevenue), icon: CreditCard, color: 'text-cyan-500', bg: 'bg-cyan-50 dark:bg-cyan-900/20', path: '/subscriptions' },
+    { label: 'Total Users', value: totalUsers.toLocaleString(), icon: Users, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20' },
+    { label: 'Active Jobs', value: activeJobs.toLocaleString(), icon: Briefcase, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
+    { label: 'Completed', value: analytics.jobStats.completed.toLocaleString(), icon: DollarSign, color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-900/20' },
+    { label: 'Avg Rating', value: avgRating.toFixed(1), icon: TrendingUp, color: 'text-yellow-500', bg: 'bg-yellow-50 dark:bg-yellow-900/20' },
+    { label: 'Disputes', value: pendingReports.toLocaleString(), icon: AlertTriangle, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-900/20' },
+    { label: 'Subscription Revenue', value: formatCurrency(subscriptionRevenue), icon: CreditCard, color: 'text-cyan-500', bg: 'bg-cyan-50 dark:bg-cyan-900/20' },
   ];
 
   return (
@@ -52,8 +50,7 @@ export default function Dashboard() {
             {stats.map((stat, i) => {
               const Icon = stat.icon;
               return (
-                <div key={stat.label} onClick={() => navigate(stat.path)} className="cursor-pointer">
-                <Card className="animate-fade-in-up" style={{ animationDelay: `${i * 50}ms` }}>
+                <Card key={stat.label} className="animate-fade-in-up" style={{ animationDelay: `${i * 50}ms` }}>
                   <div className="flex items-center gap-2 sm:gap-3">
                     <div className={`p-1.5 sm:p-2 rounded-lg ${stat.bg}`}>
                       <Icon size={16} className={`${stat.color} sm:w-5 sm:h-5`} />
@@ -64,7 +61,6 @@ export default function Dashboard() {
                     </div>
                   </div>
                 </Card>
-                </div>
               );
             })}
           </div>
