@@ -46,6 +46,12 @@ export default function LoginScreen() {
       style={[styles.container, { backgroundColor: '#F5F5F5' }]}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
+      {/* Background Pattern */}
+      <View style={styles.bgPattern} pointerEvents="none" />
+      <View style={styles.bgCircle1} pointerEvents="none" />
+      <View style={styles.bgCircle2} pointerEvents="none" />
+      <View style={styles.bgCircle3} pointerEvents="none" />
+
       <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
         {/* Header */}
         <View style={styles.header}>
@@ -143,6 +149,41 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  bgPattern: {
+    ...StyleSheet.absoluteFillObject,
+    opacity: 0.12,
+    backgroundColor: '#5B4BDB',
+  },
+  bgCircle1: {
+    position: 'absolute',
+    top: -80,
+    right: -60,
+    width: 280,
+    height: 280,
+    borderRadius: 140,
+    backgroundColor: '#5B4BDB',
+    opacity: 0.12,
+  },
+  bgCircle2: {
+    position: 'absolute',
+    bottom: -100,
+    left: -80,
+    width: 320,
+    height: 320,
+    borderRadius: 160,
+    backgroundColor: '#5B4BDB',
+    opacity: 0.08,
+  },
+  bgCircle3: {
+    position: 'absolute',
+    top: '40%',
+    left: '50%',
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    backgroundColor: '#5B4BDB',
+    opacity: 0.06,
   },
   scrollContent: {
     flexGrow: 1,
