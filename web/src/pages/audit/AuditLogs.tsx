@@ -30,8 +30,8 @@ export default function AuditLogs() {
           <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Audit Logs</h1>
           <p className="text-xs sm:text-sm text-gray-400 dark:text-gray-500">{filtered.length} entries</p>
         </div>
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
-          <SearchBar value={search} onChange={setSearch} placeholder="Search logs..." className="sm:w-64" />
+        <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
+          <SearchBar value={search} onChange={setSearch} placeholder="Search logs..." className="flex-1 sm:flex-none sm:w-48" />
           <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)} className="px-3 py-2.5 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 min-h-[40px]">
             <option value="all">All Actions</option>
             {actionTypes.map(t => <option key={t} value={t}>{t}</option>)}

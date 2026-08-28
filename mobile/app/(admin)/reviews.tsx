@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   avgRow: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   avg: { fontSize: 20, fontWeight: 'bold' },
   avgLabel: { fontSize: 14 },
-  searchRow: { flexDirection: 'row', gap: 8, marginBottom: 12 },
+  searchRow: { flexDirection: 'column', gap: 8, marginBottom: 12 },
   searchWrapper: { flex: 1, flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderRadius: 10, paddingHorizontal: 10 },
   searchIcon: { marginRight: 6 },
   searchInput: { flex: 1, paddingVertical: 10, fontSize: 14 },

@@ -33,7 +33,7 @@ export default function Reviews() {
           <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Reviews</h1>
           <p className="text-xs sm:text-sm text-gray-400 dark:text-gray-500">{filtered.length} reviews</p>
         </div>
-        <div className="flex gap-2 w-full sm:w-auto">
+        <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
           <SearchBar value={search} onChange={setSearch} placeholder="Search reviews..." className="flex-1 sm:flex-none sm:w-48" />
           <select
             value={ratingFilter}

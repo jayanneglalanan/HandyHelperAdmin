@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   title: { fontSize: 24, fontWeight: 'bold' },
   countBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12 },
   countText: { fontSize: 12, fontWeight: '500' },
-  searchRow: { flexDirection: 'row', gap: 8, marginBottom: 12 },
+  searchRow: { flexDirection: 'column', gap: 8, marginBottom: 12 },
   searchWrapper: { flex: 1, flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderRadius: 10, paddingHorizontal: 10 },
   searchIcon: { marginRight: 6 },
   searchInput: { flex: 1, paddingVertical: 10, fontSize: 14 },
