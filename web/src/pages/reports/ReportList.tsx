@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Eye, Search as SearchIcon } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { Card, SearchBar, Tabs, Badge, StatusBadge, PageSkeleton } from '../../components/ui';
 import ResponsiveTable from '../../components/ui/ResponsiveTable';
 import { useReports } from '../../hooks/useMockData';
