@@ -99,6 +99,6 @@ const styles = StyleSheet.create({
   convJob: { fontSize: 12, marginTop: 4 },
   convMessage: { fontSize: 13, fontStyle: 'italic', marginTop: 6 },
   convFooter: { marginTop: 6 },
-  convMeta: { fontSize: 11 },
+  convMeta: { fontSize: 12 },
   convFlag: { fontSize: 12, marginTop: 6 },
 });

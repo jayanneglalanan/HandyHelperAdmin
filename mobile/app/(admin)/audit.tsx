@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
   },
   list: { paddingBottom: 20 },
   logHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  logTime: { fontSize: 11 },
+  logTime: { fontSize: 12 },
   logTarget: { fontSize: 14, fontWeight: '600', marginTop: 6 },
   logDetails: { fontSize: 13, marginTop: 2 },
-  logUser: { fontSize: 11, marginTop: 4 },
+  logUser: { fontSize: 12, marginTop: 4 },
 });

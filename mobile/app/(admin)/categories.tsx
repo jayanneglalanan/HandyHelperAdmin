@@ -49,5 +49,5 @@ const styles = StyleSheet.create({
   name: { fontSize: 14, fontWeight: '600' },
   desc: { fontSize: 12, marginTop: 2 },
   stats: { flexDirection: 'row', gap: 12, marginTop: 8 },
-  stat: { fontSize: 11 },
+  stat: { fontSize: 12 },
 });

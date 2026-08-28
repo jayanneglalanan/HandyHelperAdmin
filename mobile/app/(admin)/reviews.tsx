@@ -83,5 +83,5 @@ const styles = StyleSheet.create({
   reviewHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   stars: { flexDirection: 'row', gap: 2 },
   reviewComment: { fontSize: 14, marginTop: 6 },
-  reviewMeta: { fontSize: 11, marginTop: 4 },
+  reviewMeta: { fontSize: 12, marginTop: 4 },
 });

@@ -18,7 +18,7 @@ export default function AdminLayout() {
           </div>
         </main>
       </div>
-      <MobileNav />
+      <MobileNav onNavClick={() => setSidebarOpen(false)} />
     </div>
   );
 }

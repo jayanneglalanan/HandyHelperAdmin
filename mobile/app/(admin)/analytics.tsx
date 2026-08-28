@@ -24,9 +24,9 @@ function MiniBarChart({ data, color }: { data: { label: string; value: number }[
 const chartStyles = StyleSheet.create({
   container: { flexDirection: 'row', alignItems: 'flex-end', height: 120, gap: 4 },
   bar: { flex: 1, alignItems: 'center' },
-  value: { fontSize: 9, marginBottom: 2 },
+  value: { fontSize: 12, marginBottom: 2 },
   barFill: { width: '100%', borderRadius: 4, minHeight: 4 },
-  label: { fontSize: 9, marginTop: 4 },
+  label: { fontSize: 12, marginTop: 4 },
 });
 
 export default function AnalyticsScreen() {

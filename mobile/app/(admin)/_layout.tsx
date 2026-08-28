@@ -17,7 +17,7 @@ export default function AdminLayout() {
           borderTopColor: colors.border,
         },
         tabBarLabelStyle: {
-          fontSize: 10,
+          fontSize: 12,
         },
       }}
     >

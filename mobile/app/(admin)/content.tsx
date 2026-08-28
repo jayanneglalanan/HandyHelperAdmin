@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   itemHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   itemTitle: { fontSize: 14, fontWeight: '600', flex: 1 },
   itemSlug: { fontSize: 12, marginTop: 4 },
-  itemDate: { fontSize: 11, marginTop: 4 },
+  itemDate: { fontSize: 12, marginTop: 4 },
   itemContent: { fontSize: 13, marginTop: 6 },
   faqQuestion: { fontSize: 14, fontWeight: '600' },
   faqAnswer: { fontSize: 13, marginTop: 4, marginBottom: 8 },

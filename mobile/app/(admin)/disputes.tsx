@@ -73,6 +73,6 @@ const styles = StyleSheet.create({
   parties: { fontSize: 13, marginTop: 4 },
   job: { fontSize: 12, marginTop: 2 },
   desc: { fontSize: 13, marginTop: 6 },
-  date: { fontSize: 11, marginTop: 4 },
+  date: { fontSize: 12, marginTop: 4 },
   resolution: { fontSize: 12, marginTop: 6 },
 });

@@ -8,7 +8,7 @@ const navItems = [
   { label: 'Verify', path: '/verification', icon: ShieldCheck },
 ];
 
-export default function MobileNav() {
+export default function MobileNav({ onNavClick }: { onNavClick?: () => void }) {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 dark:bg-gray-900 dark:border-gray-800 lg:hidden safe-area-bottom">
       <div className="flex items-center justify-around h-16">
@@ -19,6 +19,7 @@ export default function MobileNav() {
               key={item.path}
               to={item.path}
               end={item.path === '/'}
+              onClick={onNavClick}
               className={({ isActive }) =>
                 `flex flex-col items-center gap-0.5 min-w-[48px] py-1 active:scale-95 transition-all duration-150 ${
                   isActive

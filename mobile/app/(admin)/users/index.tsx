@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     marginTop: 1,
   },
   userDate: {
-    fontSize: 11,
+    fontSize: 12,
     marginTop: 1,
   },
 });

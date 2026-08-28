@@ -106,5 +106,5 @@ const styles = StyleSheet.create({
   notifTitle: { fontSize: 14, fontWeight: '600', flex: 1 },
   unreadDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#2563EB' },
   notifMessage: { fontSize: 13, marginTop: 2 },
-  notifTime: { fontSize: 11, marginTop: 4 },
+  notifTime: { fontSize: 12, marginTop: 4 },
 });
