@@ -52,7 +52,8 @@ export default function Dashboard() {
             {stats.map((stat, i) => {
               const Icon = stat.icon;
               return (
-                <Card key={stat.label} className="animate-fade-in-up cursor-pointer hover:shadow-md transition-shadow" onClick={() => navigate(stat.path)} style={{ animationDelay: `${i * 50}ms` }}>
+                <div key={stat.label} onClick={() => navigate(stat.path)} className="cursor-pointer">
+                <Card className="animate-fade-in-up" style={{ animationDelay: `${i * 50}ms` }}>
                   <div className="flex items-center gap-2 sm:gap-3">
                     <div className={`p-1.5 sm:p-2 rounded-lg ${stat.bg}`}>
                       <Icon size={16} className={`${stat.color} sm:w-5 sm:h-5`} />
@@ -63,6 +64,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                 </Card>
+                </div>
               );
             })}
           </div>
